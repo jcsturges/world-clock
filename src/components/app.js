@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import ClockList from './clock_list';
-import SearchBar from './search_bar';
+import ClockList from './clock-list';
+import SearchBar from './search-bar';
 
 
 export default class App extends Component {
