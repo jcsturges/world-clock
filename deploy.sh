@@ -10,7 +10,7 @@ set -e
 
 # constants
 [[ "$#" -ge 1 ]] && AWS_PROFILE_FLAG="--profile $1" || AWS_PROFILE_FLAG=""
-S3_BUCKET="sph.j16s.com"
+S3_BUCKET="clock.j16s.com"
 CLOUDFRONT_DISTRO_ID="EDWUBHKRGG8CN"
 
 

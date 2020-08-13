@@ -2,7 +2,7 @@
   "name": "world-clock",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sph.j16s.com/",
+  "homepage": "https://clock.j16s.com/",
   "dependencies": {
     "js-cookie": "^2.2.0",
     "moment-timezone": "^0.5.21",
