@@ -2,7 +2,7 @@
 List clocks of multiple time zones
 
 ## Demo
-https://yoshi-self.github.io/world-clock/
+https://sph.j16s.com
 
 ## Features
 * Partial match search for timezone names
