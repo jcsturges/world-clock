@@ -51,7 +51,8 @@ class SearchBar extends Component {
               return item.toLowerCase().includes(value.toLowerCase());
             }}
             renderItem={(item, isHighlighted) => (
-              <div key={item} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+              <div key={item}
+                style={{ background: isHighlighted ? 'lightblue' : 'white', padding: '3px 7px', cursor: 'pointer' }}>
                 {item}
               </div>
             )}

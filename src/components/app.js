@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <div className="clearfix">
-          <a href="https://github.com/jcsturges/world-clock" target="_blank" className="float-right">GitHub</a>
+          <a href="https://github.com/jcsturges/world-clock" rel="noopener noreferrer" target="_blank" className="float-right">GitHub</a>
         </div>
         <h1>World Clock</h1>
         <SearchBar />

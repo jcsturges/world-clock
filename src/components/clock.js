@@ -8,7 +8,8 @@ import './clock.css'
 
 const Fmt = {
   DATE: 'MM/DD',
-  TIME: 'HH:mm:ss'
+  TIME: 'hh:mma',
+  TIME24: 'HH:mm:ss'
 };
 
 class Clock extends Component {
@@ -16,8 +17,8 @@ class Clock extends Component {
     return moment.tz(this.props.timezoneName).format(Fmt.DATE);
   }
 
-  getCurrentTime() {
-    return moment.tz(this.props.timezoneName).format(Fmt.TIME);
+  getCurrentTime(use24 = false) {
+    return moment.tz(this.props.timezoneName).format(use24 ? Fmt.TIME24 : Fmt.TIME);
   }
 
   getDST() {
@@ -34,11 +35,12 @@ class Clock extends Component {
     return (
       <div className="Clock clearfix">
         <div className="clock-name">{this.props.timezoneName}</div>
-        <div className="clock-time">{this.getCurrentTime()}</div>
+        <div className="clock-time">{this.getCurrentTime(true)}</div>
         <div className="clock-date">
           {this.getCurrentDate()}<br />
           {this.getDST()}
         </div>
+        <div className="clock-time muted">{this.getCurrentTime(false)}</div>
         <div className="clock-delete">
           <button
             className="btn btn-dark float-right"
