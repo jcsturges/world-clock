@@ -20,8 +20,8 @@ const TZ_DEFAULTS = [
   'US/Hawaii'
 ];
 
-const setCookie = (timezones = [], use24 = true) => {
-  const value = { timezones, use24 };
+const setCookie = (timezones = []) => {
+  const value = { timezones };
   Cookies.set(COOKIE_NAME, value, { expires: 365 * 5 });
 }
 
@@ -31,35 +31,35 @@ if (!Cookies.get(COOKIE_NAME)) {
 
 const timezonesReducer = (state=[], action) => {
   switch(action.type) {
-  case ADD_TIMEZONE: {
-    const timezones = [action.payload, ...state];
-    setCookie(TZ_DEFAULTS);
-    return timezones;
-  }
-
-  case DELETE_TIMEZONE: {
-    const timezones = state.filter((name) => name !== action.payload);
-    setCookie(TZ_DEFAULTS);
-    return timezones;
-  }
-
-  case LOAD_COOKIE: {
-    if(action.payload && action.payload.length) {
-      return action.payload;
+    case ADD_TIMEZONE: {
+      const timezones = [action.payload, ...state];
+      setCookie(TZ_DEFAULTS);
+      return timezones;
     }
 
-    return state;
-  }
+    case DELETE_TIMEZONE: {
+      const timezones = state.filter((name) => name !== action.payload);
+      setCookie(TZ_DEFAULTS);
+      return timezones;
+    }
 
-  case SORT_TIMEZONES: {
-    // NOTE: arrayMove uses slice and returns new array
-    const timezones = arrayMove(state, action.payload.oldIndex, action.payload.newIndex);
-    setCookie(TZ_DEFAULTS);
-    return timezones;
-  }
+    case LOAD_COOKIE: {
+      if(action.payload && action.payload.length) {
+        return action.payload;
+      }
 
-  default: 
-    return state;
+      return state;
+    }
+
+    case SORT_TIMEZONES: {
+      // NOTE: arrayMove uses slice and returns new array
+      const timezones = arrayMove(state, action.payload.oldIndex, action.payload.newIndex);
+      setCookie(TZ_DEFAULTS);
+      return timezones;
+    }
+
+    default: 
+      return state;
   }
 }
 

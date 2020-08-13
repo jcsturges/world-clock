@@ -72,4 +72,4 @@ class ClockList extends Component {
 
 const mapStateToProps = (state) => ({ timezones: state.timezones });
 
-export default connect(mapStateToProps, {loadCookie, sortTimezones})(ClockList);
+export default connect(mapStateToProps, { loadCookie, sortTimezones })(ClockList);
