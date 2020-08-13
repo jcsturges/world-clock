@@ -11,3 +11,4 @@ There's a deployment script in [`deploy.sh`](deploy.sh) which will build and dep
 * Defaults to a few select time zones to start (US & India)
 * Drag and drop capabilities to reorder clocks
 * This presents DST aware time zones
+* Highlights your current time zone
