@@ -3,7 +3,7 @@
   margin-bottom: 10px;
   background-color: #efefef;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: move;
 }
 
 .Clock .clock-name,
