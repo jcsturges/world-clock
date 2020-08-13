@@ -4,7 +4,7 @@ import moment from 'moment-timezone';
 import { connect } from 'react-redux'
 
 import { addTimezone } from '../actions/index';
-import './search_bar.css';
+import './search-bar.css';
 
 class SearchBar extends Component {
   constructor(props) {

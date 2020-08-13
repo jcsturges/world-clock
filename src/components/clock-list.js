@@ -4,7 +4,7 @@ import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 
 import Clock from './clock';
 import {loadCookie, sortTimezones} from '../actions/index'
-import './clock_list.css'
+import './clock-list.css'
 
 
 const SortableItem = SortableElement(({value, update}) => (
