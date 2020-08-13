@@ -2,6 +2,7 @@
   height: 60px;
   margin-bottom: 10px;
   background-color: #efefef;
+  border: 1px solid #efefef;
   border-radius: 10px;
   cursor: move;
 }
@@ -11,6 +12,10 @@
 .Clock .clock-date {
   height: 50px;
   float: left;
+}
+
+.Clock.user-time {
+  background-color: lightyellow;
 }
 
 .muted {
