@@ -64,7 +64,7 @@ class SearchBar extends Component {
               placeholder: "Time zone"
             }}
           />
-          <div class="input-group-append">
+          <div className="input-group-append">
             <button type="submit" className="btn btn-primary">Add</button>
           </div>
         </form>
