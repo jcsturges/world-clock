@@ -7,11 +7,11 @@ import {
   DELETE_TIMEZONE,
   LOAD_COOKIE,
   UPDATE_NOTES,
-  SORT_TIMEZONES,
-  COOKIE_NAME
+  SORT_TIMEZONES
 } from '../actions/index';
 
 
+const COOKIE_NAME = 'tzdata';
 const TZ_DEFAULTS = [
   'Asia/Kolkata',
   'US/Eastern',
@@ -24,6 +24,18 @@ const TZ_DEFAULTS = [
 const setCookie = (data = []) => {
   const value = { data };
   Cookies.set(COOKIE_NAME, value, { expires: 365 * 5, sameSite: 'Strict' });
+}
+
+export const getCookie = () => {
+  const c = Cookies.getJSON(COOKIE_NAME);
+
+  if (!c.data) {
+    c.data = (c.timezones || []).map(name => ({ z: name, n: '' }));
+    delete c.timezones; // convert old cookies
+    setCookie(c.data);
+  }
+
+  return c;
 }
 
 if (!Cookies.get(COOKIE_NAME)) {

@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import { getCookie } from '../reducers';
 
 
 export const ADD_TIMEZONE = 'ADD_TIMEZONE';
@@ -6,8 +6,6 @@ export const DELETE_TIMEZONE = 'DELETE_TIMEZONE';
 export const UPDATE_NOTES = 'UPDATE_NOTES';
 export const SORT_TIMEZONES = 'SORT_TIMEZONES';
 export const LOAD_COOKIE = 'LOAD_COOKIE';
-
-export const COOKIE_NAME = 'tzdata';
 
 // Add a timezone to list
 export const addTimezone = name => ({
@@ -29,12 +27,7 @@ export const updateNotes = (idx, notes = '') => ({
 
 // Load timezones from cookie
 export const loadCookie = () => {
-  const c = Cookies.getJSON(COOKIE_NAME);
-
-  if (!c.data) {
-    c.data = (c.timezones || []).map(name => ({ z: name, n: '' }));
-    delete c.timezones; // convert old cookies
-  }
+  const c = getCookie();
 
   return {
     type: LOAD_COOKIE,

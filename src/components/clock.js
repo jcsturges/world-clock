@@ -60,6 +60,7 @@ class Clock extends Component {
         <div className="clock-notes col-md-12 col-lg-2 col-xl-3">
           <div className="input-group">
             <textarea className="form-control"
+              rows={1}
               onChange={this.onInputChange.bind(this)}
               value={this.props.timezoneNotes || ''}>
             </textarea>
