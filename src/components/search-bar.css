@@ -1,5 +1,4 @@
 .SearchBar .search-form {
-  float: left;
   width: auto;
   margin-right: 15px;
 }
@@ -15,7 +14,6 @@
 }
 
 .SearchBar .search-alert {
-  float: left;
   color: #f55;
   height: calc(2.25rem + 2px);
   padding-top: 0.5rem;
