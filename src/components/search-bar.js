@@ -22,7 +22,7 @@ class SearchBar extends Component {
       return;
     }
 
-    const isInList = this.props.timezones.includes(this.state.name);
+    const isInList = this.props.timezones.find(tz => tz.name === this.state.name);
     if (isInList) {
       this.setState({ alertMessage: 'Time zone is already in the list' });
       return;
@@ -76,4 +76,4 @@ class SearchBar extends Component {
 
 const mapStateToProps = (state) => ({ timezones: state.timezones });
 
-export default connect(mapStateToProps, {addTimezone})(SearchBar);
+export default connect(mapStateToProps, { addTimezone })(SearchBar);

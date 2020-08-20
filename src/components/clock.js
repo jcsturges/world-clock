@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment-timezone';
 import { connect } from 'react-redux';
 
-import { deleteTimezone } from '../actions/index'
+import { deleteTimezone, updateNotes } from '../actions/index'
 import './clock.css'
 
 
@@ -36,24 +36,38 @@ class Clock extends Component {
   }
 
   onDeleteClick() {
-    this.props.deleteTimezone(this.props.timezoneName);
+    this.props.deleteTimezone(this.props.timezoneIndex);
+  }
+
+  onInputChange(e) {
+    this.props.updateNotes(this.props.timezoneIndex, e.target.value);
   }
 
   render() {
     const myTz = this.isMyTime();
 
     return (
-      <div className={`Clock clearfix ${myTz ? 'user-time' : ''}`}>
-        <div className="clock-name">{this.props.timezoneName} {myTz && <span className="badge badge-pill badge-primary">me</span>}</div>
-        <div className="clock-time">{this.getCurrentTime(true)}</div>
-        <div className="clock-date">
-          {this.getCurrentDate()}<br />
-          {this.getDST()}
+      <div className={`Clock clearfix row ${myTz ? 'user-time' : ''}`}>
+        <div className="clock-name col-md-12 col-lg-1">{this.props.timezoneName} {myTz && <span className="badge badge-pill badge-primary">me</span>}</div>
+        <div className="col-md-12 col-lg-6 col-xl-5">
+          <div className="clock-time">{this.getCurrentTime(true)}</div>
+          <div className="clock-date">
+            {this.getCurrentDate()}<br />
+            {this.getDST()}
+          </div>
+          <div className="clock-time muted">{this.getCurrentTime(false)}</div>
         </div>
-        <div className="clock-time muted">{this.getCurrentTime(false)}</div>
-        <div className="clock-delete">
+        <div className="clock-notes col-md-12 col-lg-2 col-xl-3">
+          <div className="input-group">
+            <textarea className="form-control"
+              onChange={this.onInputChange.bind(this)}
+              value={this.props.timezoneNotes || ''}>
+            </textarea>
+          </div>
+        </div>
+        <div className="clock-delete col-md-12 col-lg-1 col-xl-1">
           <button
-            className="btn btn-dark float-right"
+            className="btn btn-sm btn-dark"
             onClick={this.onDeleteClick.bind(this)}
           >
             Delete
@@ -64,4 +78,4 @@ class Clock extends Component {
   }
 }
 
-export default connect(null, {deleteTimezone})(Clock);
+export default connect(null, { deleteTimezone, updateNotes })(Clock);
